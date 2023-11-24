@@ -8,7 +8,14 @@ const App = () => {
   const [counter, setCounter] = useState(0);
   const contextValue = "Hello from Context!";
 
+  const [data, setData] = useState([]);
+
   const inputRef = useRef(null);
+
+  const addData = () => {
+    console.log(...data);
+    setData([...data, inputRef.current.value]);
+  };
 
   const btnClick = () => {
     setCounter(counter + 1);
@@ -22,12 +29,10 @@ const App = () => {
       </MyContext.Provider> */}
 
       <input ref={inputRef} type="text" />
-      <button
-        onClick={() => {
-          console.log(inputRef.current.value);
-        }}>
-        submit
-      </button>
+      <button onClick={addData}>submit</button>
+      {data.map((item, index) => {
+        return <h2 key={index}>{item}</h2>;
+      })}
     </div>
   );
 };
