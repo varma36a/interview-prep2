@@ -1,7 +1,15 @@
 import React from "react";
 
-const FirstComponent = (props) => {
-  return <div>{props.data}</div>;
+const FirstComponent = ({ data, func }) => {
+  const setCounter = () => {
+    func(10);
+  };
+  return (
+    <div>
+      {data}
+      <button onClick={setCounter}>Set Value</button>
+    </div>
+  );
 };
 
 export default FirstComponent;
